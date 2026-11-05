@@ -447,11 +447,11 @@
       <div class="field"><label for="f-note">Anything else I should know?</label><textarea id="f-note" name="message" rows="4"></textarea></div>
       <input type="hidden" name="_subject" value="Résumé request from your portfolio">
       <div><button type="submit" class="btn btn-gold">Send request</button></div>
-      <p class="err" id="form-fail" style="display:none">Something went wrong sending the request. Please email me directly at <a href="mailto:vincentmcdowelljr@gmail.com">vincentmcdowelljr@gmail.com</a>.</p>
+      <p class="err" id="form-fail" style="display:none">Something went wrong sending the request<span id="fail-detail"></span>. Please email me directly at <a href="mailto:vincentmcdowelljr@gmail.com">vincentmcdowelljr@gmail.com</a>.</p>
     </form>
     <div class="sent" id="form-sent" role="status">
       <p class="big">Request sent</p>
-      <p style="margin:0 0 24px;color:var(--text-2);max-width:34em" id="sent-text">Thanks. I’ll email my résumé to you shortly.</p>
+      <p style="margin:0 0 24px;color:var(--text-2);max-width:34em" id="sent-text">Thanks! Reaching out to Vincent to send his résumé your way.</p>
       <button type="button" class="btn btn-soft" id="send-another">Send another request</button>
     </div>
   </section>
@@ -542,10 +542,26 @@
     var button = form.querySelector('button[type=submit]');
     button.disabled = true; button.textContent = 'Sending…';
     fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-      .then(function (r) { if (!r.ok) throw new Error('send failed');
-        document.getElementById('sent-text').textContent = 'Thanks, ' + data.get('name') + '. I’ll email my résumé to ' + data.get('email') + ' for the ' + data.get('role') + ' role at ' + data.get('company') + '.';
-        form.style.display = 'none'; sent.style.display = 'block'; })
-      .catch(function () { fail.style.display = 'block'; })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (body) {
+          if (!r.ok) {
+            var detail = (body.errors || []).map(function (e) { return e.message; }).join(' ') || body.error || ('HTTP ' + r.status);
+            throw new Error(detail);
+          }
+          document.getElementById('sent-text').textContent = 'Thanks, ' + data.get('name') + '! Reaching out to Vincent to send his résumé your way for the ' + data.get('role') + ' role at ' + data.get('company') + '.';
+          form.style.display = 'none'; sent.style.display = 'block';
+        });
+      })
+      .catch(function (e) {
+        if (e instanceof TypeError) {
+          // The browser blocked the background request (for example when the page is opened as a local file).
+          // Send the form the ordinary way instead; Formspree shows its own thank-you page.
+          form.submit();
+          return;
+        }
+        document.getElementById('fail-detail').textContent = e.message ? ' (' + e.message + ')' : '';
+        fail.style.display = 'block';
+      })
       .finally(function () { button.disabled = false; button.textContent = 'Send request'; });
   });
   document.getElementById('send-another').addEventListener('click', function () {
