@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My story | Vincent McDowell Jr.</title>
+<meta name="description" content="The engineering story of Vincent McDowell Jr., from delivery robots in high school to humanoid robots at Apptronik / Google DeepMind.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0B0B0F;--text-2:#3A3A42;--muted:#5F6368;--navy:#1B2D5B;--blue:#2E5090;--gold:#F5C518;--gold-hover:#FFD23A;--soft:#F6F7FA;--line:#8A8F99;--error:#B3261E}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:#fff;font-size:17px;line-height:1.6}
+  a{color:var(--blue)}a:hover{color:var(--navy)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.hc:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  button{font-family:inherit;cursor:pointer}
+  img{max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding-left:5%;padding-right:5%}
+  h1,h2,h3{margin:0}
+  .kicker{margin:0 0 12px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  mark{background:var(--gold);color:var(--ink);padding:0 6px;border-radius:4px;font-weight:600}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:0;transition:transform .15s,background .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:var(--gold-hover);color:var(--ink)}
+  .btn-navy{background:var(--blue);color:#fff}.btn-navy:hover{background:var(--navy);color:#fff}
+  .btn-soft{background:#F2F3F7;color:var(--ink)}.btn-soft:hover{color:var(--ink)}
+  .btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}.btn-line:hover{color:#fff;box-shadow:inset 0 0 0 2px #fff}
+  .hl{margin:0;padding-left:20px}.hl li{margin-bottom:6px}
+
+  /* Reading progress bar */
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--gold);z-index:30;transition:width .12s linear}
+
+  /* Scroll-triggered reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Header */
+  header .wrap{padding-top:24px;padding-bottom:24px;display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between}
+  header .brand{font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  header nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;font-size:15px;font-weight:500}
+  header nav a:not(.btn){color:var(--ink);text-decoration:none;padding:10px 0}
+
+  /* Hero */
+  .hero{padding-top:56px;padding-bottom:96px;display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+  .hero .copy{flex:3 1 520px;min-width:0}
+  .hero h1{font-size:64px;line-height:1.02;font-weight:800;letter-spacing:-.04em;margin-bottom:28px}
+  .hero .lead{margin:0 0 20px;font-size:19px;line-height:1.65;color:var(--text-2);max-width:34em}
+  .hero .note{margin:0 0 36px;color:var(--muted);max-width:34em}
+  .hero .portrait{flex:2 1 320px;min-width:0}
+  .portrait .frame{aspect-ratio:4/5;border-radius:16px;background:var(--navy);color:#C9D3EA;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;font-size:15px;box-shadow:0 32px 64px -32px rgba(27,45,91,.6);position:relative;overflow:hidden}
+  .portrait .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* Story rail */
+  #story{position:relative}
+  .rail,.rail-fill{position:absolute;top:0;left:calc(5% + 27px);width:2px}
+  .rail{bottom:0;background:#E6E7EC}
+  .rail-fill{height:0;background:var(--gold);transition:height .2s linear}
+  .chapter{position:relative;margin:48px -5.3% 0;padding:72px 5.3%;color:#fff;border-radius:20px}
+  .chapter:first-of-type{margin-top:0}
+  .chapter.blue{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%)}
+  .chapter.blue-rev{background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 100%)}
+  .chapter.black{background:var(--ink)}
+  .chapter .inner{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end}
+  .chapter .num{margin:0;font-size:120px;line-height:.85;font-weight:800;letter-spacing:-.05em;color:var(--gold);flex:0 0 auto}
+  .chapter .text{flex:1 1 400px;min-width:0}
+  .chapter .label{margin:0 0 8px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C9D3EA}
+  .chapter.black .label{color:#9AA3B5}
+  .chapter h2{font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+  .chapter .sub{margin:0;font-size:18px;color:#DCE3F3;max-width:36em}
+  .chapter.black .sub{color:#C9CDD6}
+  .entries{padding:48px 0 24px}
+  .entry{position:relative;padding:24px 0 24px 72px}
+  .entry .dot{position:absolute;left:19px;top:30px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--blue)}
+  .entry .dot.gold{border-color:var(--gold);background:var(--gold)}
+  .entry .yr{margin:0 0 4px;font-size:14px;font-weight:600;color:var(--blue)}
+  .entry h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .entry .d{margin:0;color:var(--text-2);max-width:42em}
+
+  /* Highlight cards */
+  .hc{background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(11,11,15,.06),0 12px 32px -16px rgba(11,11,15,.25);transition:box-shadow .25s,transform .25s;cursor:pointer;position:relative;overflow:hidden}
+  .hc:hover,.hc:focus-within,.hc.open{box-shadow:0 0 0 2px var(--gold),0 20px 48px -20px rgba(11,11,15,.35);transform:translateY(-3px)}
+  .hc .top{display:flex;flex-wrap:wrap}
+  .hc .media{flex:2 1 300px;min-width:0;aspect-ratio:16/10;background:#EEF0F5;color:var(--muted);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:14px;position:relative;overflow:hidden}
+  .hc .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hc .body{flex:3 1 340px;min-width:0;padding:28px}
+  .hc .meta{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--blue)}
+  .hc h3{font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+  .hc .sum{margin:0 0 14px;color:var(--text-2)}
+  .hc .hint{margin:0;color:var(--muted);font-size:13px;transition:opacity .2s}
+  .hc:hover .hint,.hc:focus-within .hint,.hc.open .hint{opacity:0}
+  .hc .more{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .35s ease,padding .35s ease;padding:0 28px}
+  .hc:hover .more,.hc:focus-within .more,.hc.open .more{max-height:560px;opacity:1;padding:0 28px 28px}
+  .hc .pair{display:flex;flex-wrap:wrap;gap:20px 32px;padding-top:20px;border-top:2px solid var(--gold)}
+  .hc .pair > div{flex:1 1 280px;min-width:0}
+  .tag{display:inline-block;margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:2px 8px;border-radius:4px}
+  .hc .pair p{margin:0;font-size:15px;color:var(--text-2)}
+  .hc .tools{margin:16px 0 0;font-size:14px;color:var(--muted)}
+
+  /* Epilogue */
+  .epilogue{background:var(--soft)}
+  .epilogue .wrap{padding-top:96px;padding-bottom:96px}
+  .epilogue h2{font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.03em;margin-bottom:48px}
+  .epilogue .cols{display:flex;flex-wrap:wrap;gap:32px 56px}
+  .epilogue .cols > div{flex:1 1 320px;min-width:0}
+  .epilogue h3{font-size:18px;font-weight:700;margin-bottom:12px}
+  .epilogue p,.epilogue li{color:var(--text-2);font-size:16px}
+  .chips{list-style:none;margin:0 0 28px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .chips li{padding:8px 14px;border-radius:999px;background:#fff;font-size:14px;font-weight:500;box-shadow:0 1px 2px rgba(11,11,15,.08);color:var(--ink)}
+
+  /* Form */
+  .request{padding-top:96px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start}
+  .request .intro{flex:1 1 300px;min-width:0}
+  .request h2{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.03em;margin-bottom:16px}
+  .request form,.sent{flex:2 1 560px;min-width:0;background:#fff;border-radius:16px;padding:40px;box-shadow:0 1px 2px rgba(11,11,15,.06),0 16px 40px -16px rgba(11,11,15,.2)}
+  .request form{display:flex;flex-direction:column;gap:20px}
+  .frow{display:flex;flex-wrap:wrap;gap:20px}
+  .field{flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .field.wide{flex:2 1 300px}
+  .field label{font-size:15px;font-weight:600}
+  .field input,.field select,.field textarea{min-height:48px;width:100%;padding:0 14px;font-family:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px}
+  .field textarea{padding:12px 14px;line-height:1.5;resize:vertical}
+  .field.invalid input{border-color:var(--error)}
+  .err{display:none;margin:0;font-size:14px;color:var(--error)}
+  .field.invalid .err{display:block}
+  .sent{display:none}
+  .sent .big{margin:0 0 8px;font-size:24px;font-weight:700;letter-spacing:-.02em}
+
+  /* Footer */
+  footer .wrap{padding-top:56px;padding-bottom:64px}
+  footer .panel{border-radius:20px;background:var(--navy);color:#fff;padding:64px 56px;display:flex;flex-wrap:wrap;gap:32px 48px;align-items:center;justify-content:space-between}
+  footer h2{font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+  footer .links{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font-weight:600}
+  .copyright{margin:32px 0 0;font-size:14px;color:var(--muted)}
+
+  @media (max-width:640px){
+    .hero h1{font-size:42px}
+    .chapter{padding:48px 6%}
+    .chapter .num{font-size:80px}
+    .chapter h2{font-size:34px}
+    footer .panel{padding:40px 28px}
+    .request form,.sent{padding:28px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .hc:hover,.hc.open{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">Vincent McDowell Jr.</a>
+    <nav aria-label="Chapters">
+      <a href="index.html">Home</a>
+      <a href="#ch1">Foundation</a>
+      <a href="#ch2">Toolkit</a>
+      <a href="#ch3">Prototyping</a>
+      <a href="#ch4">Robotics</a>
+      <a href="#request" class="btn btn-gold" style="min-height:44px;padding:0 20px;font-size:15px">Request my résumé</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero reveal" id="top">
+    <div class="copy">
+      <p class="kicker">Prologue</p>
+      <h1>Engineering intelligent systems from concept to deployment.</h1>
+      <p class="lead">I’m an Electrical and Computer Engineer specializing in mechatronics, bridging the intersection of hardware, software, and AI. Currently, I’m a mechatronic engineer at Apptronik / Google DeepMind, working on humanoid robotic systems.</p>
+      <p class="note">This page tells the story in four chapters, from delivery robots in high school to humanoids today. Scroll to turn the pages.</p>
+      <div class="actions">
+        <a href="#ch1" class="btn btn-navy">Start the story</a>
+        <a href="#contact" class="btn btn-soft">Contact me</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <!-- Add your photo: <img src="images/portrait.jpg" alt="Vincent McDowell Jr. with a robot"> inside the frame -->
+      <div class="frame">[Portrait: you with a robot or at your bench]</div>
+    </div>
+  </section>
+
+  <div id="story" class="wrap">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="rail-fill" id="rail-fill" aria-hidden="true"></div>
+
+    <section id="ch1" class="chapter blue reveal" aria-labelledby="ch1-h">
+      <div class="inner">
+        <p class="num">01</p>
+        <div class="text">
+          <p class="label">Chapter one, 2016 to 2021</p>
+          <h2 id="ch1-h">Early foundation</h2>
+          <p class="sub">Mentorship programs, summer institutes, and a first robot that had to find its own way through a maze.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="entries">
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2016 to 2020</p><h3>Dr. Frank S. Greene Scholars Program</h3><p class="d">A program that gives African American youth hands-on experience across STEM professions. Through it, I joined the 2016 Stanford SLAC Engineering Summer Program and researched the behavior of light.</p></div>
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2018 to 2019</p><h3>Engineer, Amazon Teens Who Build</h3><p class="d">I designed and programmed package-delivery robots in Java and Python that navigated a changing maze with Raspberry Pi, Arduino, and RPLiDAR, and built a drone and a four-wheel rover that carried 5 to 10 lb payloads autonomously.</p></div>
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2019</p><h3>Student, Oracle Code 4 Kids</h3><p class="d">I completed lectures and hands-on programming projects in C++ and Scratch.</p></div>
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2020</p><h3>Coding Engineer, Google Computer Science Summer Institute</h3><p class="d">In a four-week program taught by Google engineers, I built “Maggie the Magpie,” a chatbot users talk to through speech-to-text and text-to-speech, using machine learning, JavaScript, and HTML.</p></div>
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2020 to 2021</p><h3>Stanford BioJam</h3><p class="d">I designed STEM-based products and community events aimed at improving the local environment.</p></div>
+    </div>
+
+    <section id="ch2" class="chapter black reveal" aria-labelledby="ch2-h">
+      <div class="inner">
+        <p class="num">02</p>
+        <div class="text">
+          <p class="label">Chapter two, 2020 to 2024</p>
+          <h2 id="ch2-h">Building the toolkit</h2>
+          <p class="sub">A B.S. in Electrical Engineering at UC Santa Cruz, a robot that scores on its own, and a summer testing Alexa at scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="entries">
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">2020 to June 2024</p><h3>B.S. Electrical Engineering, UC Santa Cruz</h3><p class="d">Electronics and Optics. <mark>Dean’s Honors</mark>. Resident assistant for three years.</p></div>
+
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <!-- Add media: <img src="images/soccer-robot.jpg" alt="..."> -->
+            <div class="media">[Video: one full run, from finding the goal to reloading]</div>
+            <div class="body">
+              <p class="meta">Introduction to Mechatronics, 2023</p>
+              <h3>Autonomous robot soccer player</h3>
+              <p class="sum">A robot that finds the goal, shoots ping-pong balls past the goalie, and drives back to reload, all with no human input.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>The light and signal sensors picked up noise outside the beacon band, and the robot had to fire without hitting a moving goalie.</p></div>
+              <div><span class="tag">Impact</span><p>I designed Butterworth and Chebyshev filters tuned to 1.5 to 2.5 kHz in Allegro, extending usable sensor range, and modeled the chassis in SOLIDWORKS. [X] of [X] shots scored in competition runs.</p></div>
+            </div>
+            <p class="tools">C, Allegro PCB Designer, SOLIDWORKS, analog filter design</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <div class="media">[Photo: Raspberry Pi and microphone test rig]</div>
+            <div class="body">
+              <p class="meta">Amazon Lab126, summer 2023</p>
+              <h3>Quality Assurance Engineer Intern</h3>
+              <p class="sum">I built the audio library, automation, and hardware setup used to benchmark Alexa speech recognition against competitor devices.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>Competitor devices could not run inside the Alexa test framework, and manual ASR runs were slow and hard to compare fairly.</p></div>
+              <div><span class="tag">Impact</span><p>An unbiased library of <mark>18,000</mark> test recordings, Python test automation on Linux driving Raspberry Pis and external microphones, and a new setup that brought competitor devices into the Alexa environment. [X] devices benchmarked side by side.</p></div>
+            </div>
+            <p class="tools">Python, Linux, Raspberry Pi, Amazon internal test software</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <div class="media">[CFD renders of the enclosure, or flight footage]</div>
+            <div class="body">
+              <p class="meta">CITRIS capstone (ECE 129), 2024</p>
+              <h3>Air-quality sensing drone</h3>
+              <p class="sum">As aerodynamics and flight dynamics engineer on our capstone team, I helped build a low-cost, modular drone that collects real-time air-quality data.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>A low-cost platform still had to fly stably with a sensor payload, and raw readings from several sensors were not usable for decisions on their own.</p></div>
+              <div><span class="tag">Impact</span><p>A Python AQI algorithm that fuses the sensor streams into a real-time assessment, and a payload enclosure iterated in SOLIDWORKS CFD and FEA. Drag reduced by [X]% across [X] iterations.</p></div>
+            </div>
+            <p class="tools">Python, SOLIDWORKS Simulation (CFD/FEA)</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <section id="ch3" class="chapter blue-rev reveal" aria-labelledby="ch3-h">
+      <div class="inner">
+        <p class="num">03</p>
+        <div class="text">
+          <p class="label">Chapter three, 2025</p>
+          <h2 id="ch3-h">Rapid prototyping</h2>
+          <p class="sub">A master’s in robotics and controls, automation for automotive control models at Cummins, and a test rig built from scratch.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="entries">
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <div class="media">[Diagram: component integration into the control architecture model]</div>
+            <div class="body">
+              <p class="meta">Cummins Inc., Corporate Research and Technology, summer 2025</p>
+              <h3>Electronic Controls Engineer Intern</h3>
+              <p class="sum">I extended the automation that inserts and updates software components in automotive control architecture models for the AESW team.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>Components were integrated by hand, which slowed rapid prototyping, and port and connector errors only surfaced late, during model execution.</p></div>
+              <div><span class="tag">Impact</span><p><mark>100%</mark> of new and updated components integrated correctly into the architecture file, plus Python parsers for ARXML/ECU files that flag [X] port and connector mismatches before execution. [X] hours saved per cycle.</p></div>
+            </div>
+            <p class="tools">Python, MATLAB Simulink, AUTOSAR/CSAR, ARXML, Speedgoat</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <div class="media">[Photo: custom PCB shield on the Uno32 with the GUI beside it]</div>
+            <div class="body">
+              <p class="meta">Autonomous Systems Lab, fall 2025</p>
+              <h3>Uno32 pin tester</h3>
+              <p class="sum">An independent research project: a rig that checks every pin on a PIC32/Uno32 board and shows results live.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>The board’s own self-test missed pin faults, and the Arduino tester lacked both the channels and the input compatibility to read the Uno32 directly.</p></div>
+              <div><span class="tag">Impact</span><p>Non-blocking state machines on both boards, a UART handshake feeding a Tkinter GUI, three 16-channel multiplexers (<mark>48 channels</mark>) with voltage-divider PWM mapping, and a custom PCB shield. Detection accuracy above the self-test [by X%]; setup cut from [X] to [X] minutes.</p></div>
+            </div>
+            <p class="tools">C, Python (Tkinter), UART, PCB design</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="entry reveal"><span class="dot" aria-hidden="true"></span><p class="yr">December 2025</p><h3>M.S. Electrical and Computer Engineering, UC Santa Cruz</h3><p class="d">Robotics, Controls, and Cyber-Physical Systems. Teaching assistant for CT 10: Understanding Digital Design and ARTG 10: Aesthetic Designs.</p></div>
+    </div>
+
+    <section id="ch4" class="chapter black reveal" aria-labelledby="ch4-h">
+      <div class="inner">
+        <p class="num">04</p>
+        <div class="text">
+          <p class="label">Chapter four, 2026 to present</p>
+          <h2 id="ch4-h">Advanced robotics</h2>
+          <p class="sub">Keeping a fleet of humanoid prototypes alive at Apptronik / Google DeepMind, one root cause at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="entries" style="padding-bottom:48px">
+      <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
+        <article class="hc" tabindex="0" aria-expanded="false">
+          <div class="top">
+            <div class="media">[Approved photo of you with the hardware, or a public image of the robot]</div>
+            <div class="body">
+              <p class="meta">Apptronik / Google DeepMind, February 2026 to present</p>
+              <h3>Mechatronic Engineer, Robotics Systems</h3>
+              <p class="sum">I troubleshoot, repair, and validate humanoid robot subsystems, including actuators, cameras, end-effectors, and sensor assemblies, across a fleet of prototypes.</p>
+              <p class="hint">Hover or tap to see the constraint and the impact</p>
+            </div>
+          </div>
+          <div class="more">
+            <div class="pair">
+              <div><span class="tag">Constraint</span><p>Faults could originate in the mechanical, electrical, or control layer, and hardware configuration records drifted across the fleet as parts were swapped.</p></div>
+              <div><span class="tag">Impact</span><p>Restored robotic hands and multi-modal sensing (vision, motion tracking) on [X] units, validated the full sensor-to-actuator path during bring-up, and wrote Python tools that cut configuration updates from [X] to [X] minutes.</p></div>
+            </div>
+            <p class="tools">Python, GitHub, system logs, telemetry, control software</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <section class="epilogue reveal" id="epilogue" aria-labelledby="epi-h">
+    <div class="wrap">
+      <p class="kicker">Epilogue</p>
+      <h2 id="epi-h">Beyond the lab</h2>
+      <div class="cols">
+        <div>
+          <h3>Honors</h3>
+          <ul class="hl">
+            <li><mark>1st place</mark>, NAACP Entrepreneurship, Northern California, for Free Bird (2019, 2020)</li>
+            <li><mark>1st place</mark>, NAACP Musical Contemporary, Northern California, on violin (2019)</li>
+            <li><mark>CCS Division II Champions</mark>, varsity football (2019 to 2020)</li>
+            <li>Michael Halpin Legacy / Special Coach’s Award, varsity football (2020)</li>
+            <li>Two-time Nationals qualifier, varsity badminton (2018, 2019)</li>
+            <li>Stanford Science Fair: “The True Capability of Ads” (2017)</li>
+            <li>Cloud Computing Basics (Cloud 101) certificate (2020)</li>
+            <li>First-degree black belt, All-Pro Tae Kwon Do</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Music, theater, and sport</h3>
+          <ul class="hl" style="margin-bottom:28px">
+            <li>Guitar, violin, piano, and ukulele</li>
+            <li>Mamma Mia (supporting role), Les Misérables (featured roles), Spelling Bee (featured roles), Anything Goes (ensemble)</li>
+            <li>Varsity football (4 years), varsity badminton (4 years), All-Pro Tae Kwon Do (7 years), Mike Allen AAU basketball, “Ballin’ Ambassadors” (2 years), soccer (2 years)</li>
+          </ul>
+          <h3>Leadership and community</h3>
+          <p style="margin:0 0 12px">Eagle Scouts mentor (current), San Jose Vietnamese Running Club (SJVRC) volunteer (current), and resident assistant at UC Santa Cruz (3 years). Also more than 50 hours with Second Harvest, Leo Club, Nhat Tam Foundation, and Le Gatos Acceplla Club.</p>
+          <p style="margin:0;color:var(--muted);font-size:15px">Member of NSBE, IEEE, ACM, Google Developer Student Club, SASE, Santa Cruz Artificial Intelligence (SCAI), MESA/MEP, and the Black Men’s Initiative.</p>
+        </div>
+        <div>
+          <h3>Specialties and Areas of Interest</h3>
+          <ul class="chips">
+            <li>Robotics</li><li>Hardware design</li><li>Circuit and PCB design</li><li>Embedded &amp; cyber-physical systems</li><li>Controls and automation</li><li>Test and validation</li><li>AI and software</li>
+          </ul>
+          <h3>Technical skills</h3>
+          <p style="margin:0 0 8px;font-size:15px"><strong>Hardware:</strong> digital and analog circuit design, hardware system integration, embedded systems, electromagnetics, signal and power integrity, cyber-physical systems</p>
+          <p style="margin:0 0 8px;font-size:15px"><strong>Software:</strong> C/C++, Python, MATLAB, Simulink, SOLIDWORKS (CFD/FEA), Linux, Allegro PCB Designer, Verilog, SystemVerilog, VHDL, MIPS, Java/JavaScript, HTML, AUTOSAR</p>
+          <p style="margin:0;font-size:15px"><strong>Equipment:</strong> Raspberry Pi, Arduino (Uno32, PIC32, Uno R3), LiDAR, PICkit 3, AC/DC motor actuators, oscilloscope, multimeter, signal generator, power supply, drones, soldering, Speedgoat</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap request reveal" id="request" aria-labelledby="request-h">
+    <div class="intro">
+      <p class="kicker">For hiring teams</p>
+      <h2 id="request-h">Request my résumé</h2>
+      <p style="margin:0 0 12px;color:var(--text-2);max-width:26em">Tell me a little about the role, and I’ll email my current résumé straight to you.</p>
+      <p style="margin:0;font-size:14px;color:var(--muted)">Fields marked * are required.</p>
+    </div>
+    <!-- FORM SETUP: use the same Formspree id as index.html. -->
+    <form id="resume-form" action="https://formspree.io/f/meaanvoy" method="POST" novalidate>
+      <div class="frow">
+        <div class="field"><label for="f-name">Your name *</label><input id="f-name" name="name" type="text" autocomplete="name" required><p class="err">Enter your name.</p></div>
+        <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" type="email" autocomplete="email" required><p class="err">Enter an email address like name@company.com.</p></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="f-company">Company *</label><input id="f-company" name="company" type="text" autocomplete="organization" required><p class="err">Enter your company.</p></div>
+        <div class="field"><label for="f-role">Role you’re hiring for *</label><input id="f-role" name="role" type="text" required><p class="err">Enter the role you’re hiring for.</p></div>
+      </div>
+      <div class="frow">
+        <div class="field wide"><label for="f-link">Link to the job posting</label><input id="f-link" name="job_link" type="url"></div>
+        <div class="field" style="flex-basis:180px"><label for="f-mode">Work arrangement</label>
+          <select id="f-mode" name="work_arrangement"><option value="">Choose one</option><option>On-site</option><option>Hybrid</option><option>Remote</option><option>Not sure yet</option></select></div>
+      </div>
+      <div class="field"><label for="f-note">Anything else I should know?</label><textarea id="f-note" name="message" rows="4"></textarea></div>
+      <input type="hidden" name="_subject" value="Résumé request from your portfolio">
+      <div><button type="submit" class="btn btn-gold">Send request</button></div>
+      <p class="err" id="form-fail" style="display:none">Something went wrong sending the request. Please email me directly at <a href="mailto:vincentmcdowelljr@gmail.com">vincentmcdowelljr@gmail.com</a>.</p>
+    </form>
+    <div class="sent" id="form-sent" role="status">
+      <p class="big">Request sent</p>
+      <p style="margin:0 0 24px;color:var(--text-2);max-width:34em" id="sent-text">Thanks. I’ll email my résumé to you shortly.</p>
+      <button type="button" class="btn btn-soft" id="send-another">Send another request</button>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="panel">
+      <div style="flex:1 1 360px;min-width:0">
+        <h2>The next chapter is unwritten.</h2>
+        <p style="margin:0;color:#C9D3EA;max-width:30em">I’m happy to talk about robotics, hardware bring-up, or any of these projects.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:vincentmcdowelljr@gmail.com" class="btn btn-gold">Contact me</a>
+        <a href="https://linkedin.com/in/vincentmcdowelljr/" class="btn btn-line">LinkedIn</a>
+        <!-- Add your GitHub: <a href="https://github.com/YOUR_USERNAME" class="btn btn-line">GitHub</a> -->
+      </div>
+    </div>
+    <p class="copyright">© 2026 Vincent McDowell Jr.</p>
+  </div>
+</footer>
+
+<script>
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reading progress bar and the gold timeline fill.
+  var bar = document.getElementById('progress');
+  var fill = document.getElementById('rail-fill');
+  var story = document.getElementById('story');
+  var ticking = false;
+  function update() {
+    var doc = document.documentElement;
+    var vh = window.innerHeight;
+    var y = window.scrollY || doc.scrollTop;
+    var total = Math.max(1, doc.scrollHeight - vh);
+    bar.style.width = Math.min(100, Math.max(0, y / total * 100)) + '%';
+    var r = story.getBoundingClientRect();
+    var top = r.top + y;
+    fill.style.height = Math.min(100, Math.max(0, (y + vh * 0.6 - top) / Math.max(1, r.height) * 100)) + '%';
+  }
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+
+  // Scroll-triggered reveals: each block fades in once, the first time it enters view.
+  var blocks = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    blocks.forEach(function (b) { b.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    blocks.forEach(function (b) { io.observe(b); });
+  }
+
+  // Highlight cards: hover and focus open them in CSS; a tap or Enter toggles them for touch and keyboard users.
+  document.querySelectorAll('.hc').forEach(function (card) {
+    function toggle() {
+      var open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+
+  // Résumé request form: validate, then send to the form service.
+  var form = document.getElementById('resume-form');
+  var sent = document.getElementById('form-sent');
+  var fail = document.getElementById('form-fail');
+  function check(id, test) {
+    var input = document.getElementById(id);
+    var ok = test(input.value.trim());
+    input.closest('.field').classList.toggle('invalid', !ok);
+    input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    return ok;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fail.style.display = 'none';
+    var ok = true;
+    ok = check('f-name', function (v) { return v.length > 0; }) && ok;
+    ok = check('f-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }) && ok;
+    ok = check('f-company', function (v) { return v.length > 0; }) && ok;
+    ok = check('f-role', function (v) { return v.length > 0; }) && ok;
+    if (!ok) { form.querySelector('.invalid input').focus(); return; }
+    var data = new FormData(form);
+    var button = form.querySelector('button[type=submit]');
+    button.disabled = true; button.textContent = 'Sending…';
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('send failed');
+        document.getElementById('sent-text').textContent = 'Thanks, ' + data.get('name') + '. I’ll email my résumé to ' + data.get('email') + ' for the ' + data.get('role') + ' role at ' + data.get('company') + '.';
+        form.style.display = 'none'; sent.style.display = 'block'; })
+      .catch(function () { fail.style.display = 'block'; })
+      .finally(function () { button.disabled = false; button.textContent = 'Send request'; });
+  });
+  document.getElementById('send-another').addEventListener('click', function () {
+    form.reset(); sent.style.display = 'none'; form.style.display = 'flex';
+  });
+  ['f-name','f-email','f-company','f-role'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { this.closest('.field').classList.remove('invalid'); });
+  });
+</script>
+</body>
+</html>

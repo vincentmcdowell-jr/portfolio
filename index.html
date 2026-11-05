@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vincent McDowell Jr. | Mechatronic Engineer</title>
+<meta name="description" content="Vincent McDowell Jr., Electrical and Computer Engineer specializing in mechatronics, robotics, and cyber-physical systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F9FA; --surface:#FFFFFF; --surface-2:#F1F3F4; --chip:#E8EAED;
+    --text:#202124; --text-2:#3C4043; --muted:#5F6368; --line:#80868B;
+    --cta:#2E5090; --cta-hover:#203A6B; --error:#B3261E; --dark:#202124;
+    --e1:0 1px 2px 0 rgba(60,64,67,.30),0 1px 3px 1px rgba(60,64,67,.15);
+    --e2:0 1px 2px 0 rgba(60,64,67,.30),0 2px 6px 2px rgba(60,64,67,.15);
+    --e3:0 1px 3px 0 rgba(60,64,67,.30),0 4px 8px 3px rgba(60,64,67,.15);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--text);background:var(--bg);font-size:16px;line-height:1.6}
+  a{color:var(--cta)}a:hover{color:var(--cta-hover)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
+  button{font-family:inherit;cursor:pointer}
+  img{max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding-left:5%;padding-right:5%}
+  .e1{background:var(--surface);border-radius:12px;box-shadow:var(--e1)}
+  .e2{background:var(--surface);border-radius:12px;box-shadow:var(--e2);transition:box-shadow .2s ease-out}
+  .e2:hover{box-shadow:var(--e3)}
+  .img{background-color:#EEF0F2;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 9px,#DFE2E6 9px,#DFE2E6 10px);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--muted);font-size:15px;position:relative;overflow:hidden}
+  .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:8px;font-weight:500;font-size:15px;letter-spacing:.01em;text-decoration:none;border:0;transition:box-shadow .15s,background .15s}
+  .btn-cta{background:var(--cta);color:#fff;box-shadow:var(--e1)}
+  .btn-cta:hover{background:var(--cta-hover);color:#fff;box-shadow:var(--e3)}
+  .btn-neutral{background:var(--surface);color:var(--text);box-shadow:var(--e1)}
+  .btn-neutral:hover{color:var(--text);box-shadow:var(--e3)}
+  .eyebrow{margin:0 0 8px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .star-h{margin:0 0 4px;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .mine{display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;padding:6px 12px;border-radius:8px;background:var(--dark);color:#fff;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+  .hl{margin:0;padding-left:20px}.hl li{margin-bottom:6px}
+  h1,h2,h3{margin:0;font-weight:500}
+  h2.section{font-size:36px;line-height:1.2;letter-spacing:-.01em;margin-bottom:40px}
+  section{padding-bottom:112px}
+
+  /* Header */
+  header{background:var(--surface);box-shadow:var(--e1);position:relative;z-index:1}
+  header .wrap{padding-top:12px;padding-bottom:12px;display:flex;flex-wrap:wrap;gap:8px 32px;align-items:center;justify-content:space-between}
+  header .brand{font-weight:500;font-size:20px;color:var(--text);text-decoration:none;padding:10px 0}
+  header nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 28px;font-size:15px;font-weight:500}
+  header nav a:not(.btn){color:var(--text-2);text-decoration:none;padding:10px 0}
+
+  /* Hero */
+  .hero{padding-top:64px;padding-bottom:64px}
+  .hero .card{padding:56px;display:flex;flex-wrap:wrap;gap:48px 56px;align-items:center}
+  .hero .copy{flex:3 1 480px;min-width:0}
+  .hero h1{font-size:52px;line-height:1.12;letter-spacing:-.02em;margin-bottom:24px}
+  .hero .lead{margin:0 0 36px;font-size:18px;line-height:1.7;color:var(--text-2);max-width:36em}
+  .hero .portrait{flex:2 1 300px;min-width:0}
+  .hero .portrait .img{aspect-ratio:4/5;border-radius:12px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* Specialties band */
+  .band{background:var(--dark);color:#fff;margin-bottom:96px;padding:0}
+  .band .wrap{padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center}
+  .band h2{font-size:24px;margin-bottom:4px}
+  .band p{margin:0;font-size:15px;color:#BDC1C6}
+  .band .intro{flex:1 1 260px;min-width:0}
+  .band ul{flex:2 1 520px;min-width:0;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .band li{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:20px;border:1.5px solid #9AA0A6;color:#fff;font-size:15px;font-weight:500}
+
+  /* Experience */
+  .roles{display:flex;flex-direction:column;gap:24px}
+  .role{padding:32px 40px}
+  .role .row{display:flex;flex-wrap:wrap;gap:8px 40px}
+  .role .dates{flex:0 0 180px;font-size:14px;color:var(--muted);padding-top:4px}
+  .role .body{flex:1 1 480px;min-width:0}
+  .role h3{font-size:21px;margin-bottom:2px}
+  .role .org{margin:0 0 12px;color:var(--muted)}
+  .role .headline{margin:0 0 4px;max-width:42em}
+  .toggle{min-height:44px;padding:0;border:0;background:transparent;color:var(--cta);font-size:15px;font-weight:500}
+  .toggle:hover{color:var(--cta-hover)}
+  .star{display:none;margin-top:12px;flex-wrap:wrap;gap:24px 40px;max-width:54em}
+  .star.open{display:flex}
+  .star .left{flex:1 1 260px;min-width:0}
+  .star .left p{margin:0 0 16px;color:var(--text-2)}
+  .star .left p:last-child{margin-bottom:0}
+  .star .right{flex:1.4 1 320px;min-width:0;padding:20px 24px;border-radius:12px;background:var(--surface-2)}
+  .star .tools{margin:12px 0 0;font-size:14px;color:var(--muted)}
+
+  /* Projects */
+  .projects{display:flex;flex-direction:column;gap:32px}
+  .project{overflow:hidden;display:flex;flex-wrap:wrap}
+  .project .img{flex:13 1 520px;min-width:0;min-height:380px}
+  .project .text{flex:7 1 320px;min-width:0;padding:32px}
+  .project .meta{margin:0 0 4px;font-size:14px;color:var(--muted)}
+  .project h3{font-size:24px;line-height:1.25;margin-bottom:20px}
+  .project .text p{font-size:15px;color:var(--text-2)}
+  .project .text p.body{margin:0 0 14px}
+  .project .text ul{font-size:15px;margin-bottom:16px}
+
+  /* Cards grid */
+  .grid{display:flex;flex-wrap:wrap;gap:20px}
+  .grid .cell{flex:1 1 320px;min-width:0;padding:24px 28px}
+  .grid .cell .yr{margin:0 0 4px;font-size:14px;color:var(--muted)}
+  .grid .cell .t{margin:0 0 6px;font-weight:500;font-size:17px}
+  .grid .cell .d{margin:0;font-size:15px;color:var(--text-2)}
+  .cols{display:flex;flex-wrap:wrap;gap:32px 48px}
+  .cols > div{flex:1 1 280px;min-width:0}
+  .cols p{margin:0;color:var(--text-2)}
+  .panel{padding:48px}
+
+  /* About */
+  .about{display:flex;flex-wrap:wrap;gap:24px 56px}
+  .about .head{flex:0 1 260px;min-width:0}
+  .about .text{flex:1 1 480px;min-width:0;max-width:40em;font-size:17px;line-height:1.7}
+  .about .text p{margin:0 0 18px;color:var(--text-2)}
+
+  /* Form */
+  .request{display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start}
+  .request .intro{flex:1 1 280px;min-width:0}
+  .request form{flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .frow{display:flex;flex-wrap:wrap;gap:18px}
+  .field{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px}
+  .field.wide{flex:2 1 280px}
+  .field label{font-size:14px;font-weight:500}
+  .field input,.field select,.field textarea{min-height:48px;width:100%;padding:0 14px;font-family:inherit;font-size:16px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:8px}
+  .field textarea{padding:12px 14px;line-height:1.5;resize:vertical}
+  .field.invalid input{border-color:var(--error)}
+  .err{display:none;margin:0;font-size:14px;color:var(--error)}
+  .field.invalid .err{display:block}
+  .sent{display:none;padding:24px;border-radius:12px;background:var(--surface-2)}
+  .sent p.big{margin:0 0 8px;font-size:22px;font-weight:500}
+
+  /* Footer */
+  footer .wrap{padding-bottom:64px}
+  footer .panel{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}
+  footer h2{font-size:32px;line-height:1.2;margin-bottom:8px}
+  footer .links{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;font-weight:500}
+  .copyright{margin:32px 0 0;font-size:14px;color:var(--muted)}
+
+  @media (max-width:640px){
+    .hero .card,.panel,.role{padding:28px}
+    .hero h1{font-size:38px}
+    h2.section{font-size:30px}
+    section{padding-bottom:80px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Vincent McDowell Jr.</a>
+    <nav aria-label="Main">
+      <a href="#experience">Experience</a>
+      <a href="#work">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#about">About</a>
+      <a href="story.html">My story</a>
+      <a href="#contact" class="btn btn-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="wrap hero">
+    <div class="e1 card">
+      <div class="copy">
+        <h1>Engineering intelligent systems from concept to deployment.</h1>
+        <p class="lead">I’m an Electrical and Computer Engineer specializing in mechatronics, bridging the intersection of hardware, software, and AI. Leveraging an extensive background in electrical hardware design, I focused deeply on robotic systems design, autonomous navigation, and sensing. I build robust cyber-physical systems, transforming conceptual designs into validated, production-ready prototypes. I take an idea from a rough concept to a working circuit, then validate it until it holds up, whether I’m leading a project or working as part of a team. Currently, I’m a mechatronic engineer at Apptronik / Google DeepMind, working on humanoid robotic systems.</p>
+        <div class="actions">
+          <a href="#contact" class="btn btn-cta">Contact me</a>
+          <a href="#request" class="btn btn-neutral">Request my résumé</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <!-- To add your photo: put the file in the images folder and replace the text below with
+             <img src="images/portrait.jpg" alt="Vincent McDowell Jr. with a robot"> -->
+        <div class="img">[Portrait: you with a robot or at your bench]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="specialties" aria-labelledby="spec-h">
+    <div class="wrap">
+      <div class="intro">
+        <h2 id="spec-h">Specialties and Areas of Interest</h2>
+        <p>The areas I work in most, across the projects and roles below.</p>
+      </div>
+      <ul>
+        <li>Robotics</li>
+        <li>Hardware design</li>
+        <li>Circuit and PCB design</li>
+        <li>Embedded &amp; cyber-physical systems</li>
+        <li>Controls and automation</li>
+        <li>Test and validation</li>
+        <li>AI and software</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" id="experience" aria-labelledby="exp-h">
+    <p class="eyebrow">Career</p>
+    <h2 class="section" id="exp-h">Experience</h2>
+    <div class="roles">
+
+      <article class="e2 role">
+        <div class="row">
+          <div class="dates">Feb 2026 to present</div>
+          <div class="body">
+            <h3>Mechatronic Engineer, Robotics Systems</h3>
+            <p class="org">Apptronik / Google DeepMind, Mountain View, CA</p>
+            <p class="headline">Restored robotic hands and multi-modal sensing, and validated sensor-to-actuator integration across fleet prototypes.</p>
+            <button class="toggle" type="button" aria-expanded="true" aria-controls="star-1">Show less</button>
+            <div class="star open" id="star-1">
+              <div class="left">
+                <p class="star-h">Situation</p>
+                <p>Prototype robots in deployment went down with faults that could originate in mechanical, electrical, or control layers, and hardware configuration records drifted across the fleet.</p>
+                <p class="star-h">Task</p>
+                <p>Troubleshoot, repair, and validate robotic subsystems: RCM, actuators, cameras, end-effectors, and sensor assemblies.</p>
+                <p class="star-h">Result</p>
+                <p>[X] robots or subsystems returned to service; configuration updates cut from [X] to [X] minutes.</p>
+              </div>
+              <div class="right">
+                <p class="mine">My contribution</p>
+                <ul class="hl">
+                  <li><strong>Robotic hands and sensing:</strong> I traced failures in robotic hands and multi-modal sensors (vision, motion tracking) across mechanical alignment, wiring, and control software, then repaired or replaced the failed parts, restoring tracking on [X] units.</li>
+                  <li><strong>End-to-end integration:</strong> I validated the full sensor-to-actuator path against system logs and telemetry, catching [X] integration faults before deployment.</li>
+                  <li><strong>Fleet configuration:</strong> I wrote Python scripts that update serial numbers in GitHub BOMs and check actuator operational constraints, reducing each update from [X] to [X] minutes.</li>
+                </ul>
+                <p class="tools">Tools: Python, GitHub, system logs, telemetry data, control software.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="e2 role">
+        <div class="row">
+          <div class="dates">Summer 2025</div>
+          <div class="body">
+            <h3>Electronic Controls Engineer Intern</h3>
+            <p class="org">Cummins Inc., Corporate Research and Technology, Columbus, IN</p>
+            <p class="headline">Automated component integration so 100% of new and updated components landed correctly in the control architecture.</p>
+            <button class="toggle" type="button" aria-expanded="false" aria-controls="star-2">Read the STAR breakdown</button>
+            <div class="star" id="star-2">
+              <div class="left">
+                <p class="star-h">Situation</p>
+                <p>The AESW team inserted and updated software components in automotive control architecture models by hand, which slowed rapid prototyping and risked connection errors.</p>
+                <p class="star-h">Task</p>
+                <p>Extend and validate the automation that integrates components into the architecture models.</p>
+                <p class="star-h">Result</p>
+                <p>100% of new and updated components integrated correctly; [X] hours saved per integration cycle.</p>
+              </div>
+              <div class="right">
+                <p class="mine">My contribution</p>
+                <ul class="hl">
+                  <li><strong>Integration automation:</strong> I extended the Component Integration Automation script in Python, MATLAB Simulink, and AUTOSAR/CSAR until it integrated 100% of new and updated components.</li>
+                  <li><strong>Model validation:</strong> I wrote Python parsers for ARXML/ECU files that validate port and connector usage, flagging [X] mismatches before execution.</li>
+                  <li><strong>Prototyping workflow:</strong> I evaluated new MATLAB features for Speedgoat and Simulink and recommended [X] workflow changes.</li>
+                </ul>
+                <p class="tools">Tools: Python, MATLAB Simulink, AUTOSAR/CSAR, ARXML, Speedgoat.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="e2 role">
+        <div class="row">
+          <div class="dates">Summer 2023</div>
+          <div class="body">
+            <h3>Quality Assurance Engineer Intern</h3>
+            <p class="org">Amazon Lab126, Sunnyvale, CA</p>
+            <p class="headline">Delivered an 18,000-recording audio library for benchmarking Alexa speech recognition against competitors.</p>
+            <button class="toggle" type="button" aria-expanded="false" aria-controls="star-3">Read the STAR breakdown</button>
+            <div class="star" id="star-3">
+              <div class="left">
+                <p class="star-h">Situation</p>
+                <p>The CABS ASR team needed a consistent, unbiased way to benchmark Alexa speech recognition against competitor devices.</p>
+                <p class="star-h">Task</p>
+                <p>Build the test audio library, the test automation, and a new hardware test setup.</p>
+                <p class="star-h">Result</p>
+                <p>18,000-recording test library delivered; [X] devices benchmarked side by side.</p>
+              </div>
+              <div class="right">
+                <p class="mine">My contribution</p>
+                <ul class="hl">
+                  <li><strong>Test library:</strong> I built an unbiased library of 18,000 test recordings, giving the team one common dataset for Alexa and competitor devices.</li>
+                  <li><strong>Test automation:</strong> I wrote Python tests on Linux driving Raspberry Pis and external microphones, cutting each test cycle by [X]%.</li>
+                  <li><strong>Cross-framework testing:</strong> I designed a setup that brought competitor devices into the Alexa test environment for side-by-side evaluation.</li>
+                </ul>
+                <p class="tools">Tools: Python, Linux, Raspberry Pi, external microphones, Amazon internal test software.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="wrap" id="work" aria-labelledby="work-h">
+    <p class="eyebrow">Research and academic work</p>
+    <h2 class="section" id="work-h" style="margin-bottom:12px">Projects</h2>
+    <p style="margin:0 0 40px;color:var(--muted);max-width:40em">Each project follows the STAR format. “My contribution” marks the work I did personally.</p>
+
+    <div class="projects">
+      <article class="e2 project">
+        <!-- Add a photo: <img src="images/uno32-shield.jpg" alt="Custom PCB shield mounted on the Uno32"> -->
+        <div class="img">[Hardware photo: PCB shield on the Uno32, or the system architecture diagram]</div>
+        <div class="text">
+          <p class="meta">Independent research, Autonomous Systems Lab, 2025</p>
+          <h3>Uno32 pin tester</h3>
+          <p class="star-h">Situation</p>
+          <p class="body">The PIC32/Uno32’s built-in self-test misses pin faults, leaving lab boards unreliable.</p>
+          <p class="star-h">Task</p>
+          <p class="body">Build a rig that tests every pin automatically and reports results in real time.</p>
+          <p class="mine">My contribution (sole developer)</p>
+          <ul class="hl">
+            <li>Non-blocking state machines on both boards</li>
+            <li>UART handshake feeding a live Tkinter GUI</li>
+            <li>Three 16-channel muxes and voltage-divider PWM mapping</li>
+            <li>Custom PCB shield for fast hookup</li>
+          </ul>
+          <p class="star-h">Result</p>
+          <p class="body">Tests all [X] pins in [X] seconds, with detection accuracy above the self-test [by X%].</p>
+        </div>
+      </article>
+
+      <article class="e2 project">
+        <!-- Add a photo: <img src="images/drone.jpg" alt="Air-quality sensing drone in flight"> -->
+        <div class="img">[Flight photo, or CFD renders of the enclosure iterations]</div>
+        <div class="text">
+          <p class="meta">CITRIS capstone (ECE 129), [X]-person team, 2024</p>
+          <h3>Air-quality sensing drone</h3>
+          <p class="star-h">Situation</p>
+          <p class="body">Environmental and public-safety monitoring needs real-time air-quality data from a low-cost platform.</p>
+          <p class="star-h">Task</p>
+          <p class="body">Our team built a modular drone that captures high-resolution, real-time air-quality data.</p>
+          <p class="mine">My contribution (aerodynamics and flight dynamics)</p>
+          <ul class="hl">
+            <li>Python AQI algorithm fusing several sensor streams</li>
+            <li>Payload enclosure iterated in SOLIDWORKS CFD and FEA</li>
+          </ul>
+          <p class="star-h">Result</p>
+          <p class="body">Enclosure drag reduced by [X]% across [X] iterations; real-time AQI from [X] sensors.</p>
+        </div>
+      </article>
+
+      <article class="e2 project">
+        <!-- Add a photo: <img src="images/soccer-robot.jpg" alt="Autonomous robot soccer player"> -->
+        <div class="img">[Photo of the robot, or the sensor-filter circuit layout]</div>
+        <div class="text">
+          <p class="meta">Introduction to Mechatronics, [team size], 2023</p>
+          <h3>Autonomous robot soccer player</h3>
+          <p class="star-h">Situation</p>
+          <p class="body">The course challenge: a robot that finds the goal, shoots past a goalie, and returns to reload with no human input.</p>
+          <p class="star-h">Task</p>
+          <p class="body">Design, build, and program the complete robot.</p>
+          <p class="mine">My contribution</p>
+          <ul class="hl">
+            <li>1.5 to 2.5 kHz Butterworth and Chebyshev sensor filters in Allegro</li>
+            <li>Chassis designed in SOLIDWORKS</li>
+            <li>Hardware tests on every sensor and circuit</li>
+          </ul>
+          <p class="star-h">Result</p>
+          <p class="body">[X] of [X] shots scored in competition runs.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="early-h">
+    <p class="eyebrow">Where it started</p>
+    <h2 class="section" id="early-h" style="margin-bottom:32px">Earlier experience</h2>
+    <div class="grid">
+      <div class="e1 cell"><p class="yr">2020 to 2021</p><p class="t">Stanford BioJam</p><p class="d">Designed STEM-based products and community events aimed at improving the local environment.</p></div>
+      <div class="e1 cell"><p class="yr">2020</p><p class="t">Coding Engineer, Google CSSI</p><p class="d">Built “Maggie the Magpie,” a speech-enabled chatbot, using machine learning, JavaScript, and HTML.</p></div>
+      <div class="e1 cell"><p class="yr">2019</p><p class="t">Student, Oracle Code 4 Kids</p><p class="d">Completed lectures and hands-on programming projects in C++ and Scratch.</p></div>
+      <div class="e1 cell"><p class="yr">2018 to 2019</p><p class="t">Engineer, Amazon Teens Who Build</p><p class="d">Programmed LiDAR-guided delivery robots in Java and Python, and built a drone and a rover carrying 5 to 10 lb payloads.</p></div>
+      <div class="e1 cell"><p class="yr">2016 to 2020</p><p class="t">Scholar, Dr. Frank S. Greene Scholars Program</p><p class="d">STEM program for African American youth, including the 2016 Stanford SLAC Engineering Summer Program.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="skills-h">
+    <div class="e1 panel">
+      <h2 id="skills-h" style="font-size:28px;margin-bottom:32px">Technical skills</h2>
+      <div class="cols">
+        <div><p class="star-h" style="margin-bottom:8px">Hardware</p><p>Digital and analog circuit design, hardware system integration, embedded systems, system and circuit assembly and analysis, electromagnetics, signal and power integrity, cyber-physical systems</p></div>
+        <div><p class="star-h" style="margin-bottom:8px">Software</p><p>C/C++, Python, MATLAB, Simulink, SOLIDWORKS, SOLIDWORKS Simulation (CFD/FEA), Linux, Allegro PCB Designer, Verilog, SystemVerilog, VHDL, MIPS, CAD, Java/JavaScript, HTML, AUTOSAR</p></div>
+        <div><p class="star-h" style="margin-bottom:8px">Equipment</p><p>Raspberry Pi, Arduino (Uno32, PIC32, Uno R3), LiDAR, PICkit 3, AC/DC motor actuators, oscilloscope, digital multimeter, signal generator, power supply, drone operation and control, soldering, Speedgoat</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="education" aria-labelledby="edu-h">
+    <p class="eyebrow">UC Santa Cruz</p>
+    <h2 class="section" id="edu-h" style="margin-bottom:32px">Education</h2>
+    <div class="grid" style="gap:24px">
+      <div class="e1 cell" style="flex-basis:420px;padding:32px">
+        <p class="yr">Dec 2025</p>
+        <h3 style="font-size:20px;margin-bottom:8px">M.S. Electrical and Computer Engineering</h3>
+        <p style="margin:0 0 12px;color:var(--text-2)">Robotics, Controls, and Cyber-Physical Systems</p>
+        <p class="d" style="color:var(--muted)">Teaching assistant for CT 10: Understanding Digital Design and ARTG 10: Aesthetic Designs.</p>
+      </div>
+      <div class="e1 cell" style="flex-basis:420px;padding:32px">
+        <p class="yr">June 2024</p>
+        <h3 style="font-size:20px;margin-bottom:8px">B.S. Electrical Engineering</h3>
+        <p style="margin:0 0 12px;color:var(--text-2)">Electronics and Optics</p>
+        <p class="d" style="color:var(--muted)">Dean’s Honors. Resident assistant for three years.</p>
+      </div>
+    </div>
+    <div class="cols" style="margin-top:40px">
+      <div style="flex-basis:420px"><p class="star-h" style="margin-bottom:8px">Hardware coursework</p><p style="font-size:15px">Introduction to Mechatronics, Electric Machinery and Control, System Identification, Advanced Power Electronics, Linear Dynamical Systems, Electronic Circuits, Signals and Systems, Electromagnetic Fields and Waves, Energy Conversion and Control, Renewable Energy and Smart Grids, Analog Electronics, Properties of Materials, Communication Systems, Imaging Instrumentation, Medical Image Formation</p></div>
+      <div style="flex-basis:420px"><p class="star-h" style="margin-bottom:8px">Software coursework</p><p style="font-size:15px">Cyber-Physical Systems, Embedded Systems and C Programming, Small-Scale UAV Theory and Practice, Logic Design, Computer Systems and Assembly Language, Computer Networks</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="about" aria-labelledby="about-h">
+    <div class="e1 panel about">
+      <div class="head">
+        <p class="eyebrow">Who I am</p>
+        <h2 id="about-h" style="font-size:36px;line-height:1.2">About me</h2>
+      </div>
+      <div class="text">
+        <p style="color:var(--text)">[Add a sentence or two on what first got you into robotics.]</p>
+        <p>My strength is hardware conceptualization: turning an idea into a circuit design, implementing it, and proving it works through test analysis. I’ve done that as a project lead on my own research and inside cross-functional teams at Apptronik, Cummins, and Amazon Lab126, bringing new ideas and technical concepts to hard problems.</p>
+        <p>Leadership and community: Eagle Scouts mentor (current), San Jose Vietnamese Running Club (SJVRC) volunteer (current), and resident assistant at UC Santa Cruz (3 years).</p>
+        <p style="margin:0;font-size:15px;color:var(--muted)">Member of NSBE, IEEE, ACM, Google Developer Student Club, SASE, Santa Cruz Artificial Intelligence (SCAI), MESA/MEP, and the Black Men’s Initiative.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="beyond-h">
+    <p class="eyebrow">Outside the lab</p>
+    <h2 class="section" id="beyond-h" style="margin-bottom:32px">Beyond engineering</h2>
+    <div class="grid" style="gap:24px">
+      <div class="e1 cell" style="flex:2 1 420px;padding:32px">
+        <p class="star-h" style="margin-bottom:12px">Honors and awards</p>
+        <ul class="hl" style="font-size:15px;color:var(--text-2)">
+          <li>NAACP Entrepreneurship, 1st place in Northern California for Free Bird (2019, 2020)</li>
+          <li>NAACP Musical Contemporary, 1st place in Northern California on violin (2019)</li>
+          <li>CCS Division II Champions, varsity football (2019 to 2020)</li>
+          <li>Michael Halpin Legacy / Special Coach’s Award, varsity football (2020)</li>
+          <li>Two-time Nationals qualifier, varsity badminton (2018, 2019)</li>
+          <li>Stanford Science Fair: “The True Capability of Ads” (2017)</li>
+          <li>Cloud Computing Basics (Cloud 101) certificate (2020)</li>
+          <li>First-degree black belt, All-Pro Tae Kwon Do</li>
+        </ul>
+      </div>
+      <div class="e1 cell" style="flex:1 1 300px;padding:32px">
+        <p class="star-h" style="margin-bottom:12px">Music and theater</p>
+        <ul class="hl" style="font-size:15px;color:var(--text-2);margin-bottom:24px">
+          <li>Guitar, violin, piano, and ukulele</li>
+          <li>Mamma Mia (supporting role), Les Misérables (featured roles), Spelling Bee (featured roles), Anything Goes (ensemble)</li>
+        </ul>
+        <p class="star-h" style="margin-bottom:12px">Athletics</p>
+        <ul class="hl" style="font-size:15px;color:var(--text-2)">
+          <li>Varsity football (4 years) and varsity badminton (4 years)</li>
+          <li>All-Pro Tae Kwon Do (7 years)</li>
+          <li>Mike Allen AAU basketball, “Ballin’ Ambassadors” (2 years), and soccer (2 years)</li>
+        </ul>
+      </div>
+      <div class="e1 cell" style="flex:1 1 300px;padding:32px">
+        <p class="star-h" style="margin-bottom:12px">Community service</p>
+        <p class="d">Eagle Scouts mentor (2 years) and San Jose Vietnamese Running Club (SJVRC) volunteer (3 years). Also more than 50 hours with Second Harvest, Leo Club, Nhat Tam Foundation, and Le Gatos Acceplla Club, three years each.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="request" aria-labelledby="request-h">
+    <div class="e2 panel request">
+      <div class="intro">
+        <p class="eyebrow">For hiring teams</p>
+        <h2 id="request-h" style="font-size:32px;line-height:1.2;margin-bottom:12px">Request my résumé</h2>
+        <p style="margin:0 0 12px;color:var(--text-2)">Tell me a little about the role, and I’ll email my current résumé straight to you.</p>
+        <p style="margin:0;font-size:14px;color:var(--muted)">Fields marked * are required.</p>
+      </div>
+      <!-- FORM SETUP: create a free form at https://formspree.io, the form id is already in place. -->
+      <form id="resume-form" action="https://formspree.io/f/meaanvoy" method="POST" novalidate>
+        <div class="frow">
+          <div class="field"><label for="f-name">Your name *</label><input id="f-name" name="name" type="text" autocomplete="name" required><p class="err">Enter your name.</p></div>
+          <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" type="email" autocomplete="email" required><p class="err">Enter an email address like name@company.com.</p></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="f-company">Company *</label><input id="f-company" name="company" type="text" autocomplete="organization" required><p class="err">Enter your company.</p></div>
+          <div class="field"><label for="f-role">Role you’re hiring for *</label><input id="f-role" name="role" type="text" required><p class="err">Enter the role you’re hiring for.</p></div>
+        </div>
+        <div class="frow">
+          <div class="field wide"><label for="f-link">Link to the job posting</label><input id="f-link" name="job_link" type="url"></div>
+          <div class="field" style="flex-basis:180px"><label for="f-mode">Work arrangement</label>
+            <select id="f-mode" name="work_arrangement">
+              <option value="">Choose one</option><option>On-site</option><option>Hybrid</option><option>Remote</option><option>Not sure yet</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="f-note">Anything else I should know?</label><textarea id="f-note" name="message" rows="4"></textarea></div>
+        <input type="hidden" name="_subject" value="Résumé request from your portfolio">
+        <div><button type="submit" class="btn btn-cta">Send request</button></div>
+        <p class="err" id="form-fail" style="display:none">Something went wrong sending the request. Please email me directly at <a href="mailto:vincentmcdowelljr@gmail.com">vincentmcdowelljr@gmail.com</a>.</p>
+      </form>
+      <div class="sent" id="form-sent" role="status" style="flex:2 1 520px;min-width:0">
+        <p class="big">Request sent</p>
+        <p style="margin:0 0 20px;color:var(--text-2);max-width:34em" id="sent-text">Thanks. I’ll email my résumé to you shortly.</p>
+        <button type="button" class="btn btn-neutral" id="send-another">Send another request</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="e2 panel">
+      <div>
+        <h2>Get in touch</h2>
+        <p style="margin:0;color:var(--text-2);max-width:30em">I’m happy to talk about robotics, hardware bring-up, or any of these projects.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:vincentmcdowelljr@gmail.com" class="btn btn-cta">Contact me</a>
+        <a href="https://linkedin.com/in/vincentmcdowelljr/">LinkedIn</a>
+        <!-- Add your GitHub: <a href="https://github.com/YOUR_USERNAME">GitHub</a> -->
+      </div>
+    </div>
+    <p class="copyright">© 2026 Vincent McDowell Jr.</p>
+  </div>
+</footer>
+
+<script>
+  // Expand and collapse the STAR breakdown on each role.
+  document.querySelectorAll('.toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Show less' : 'Read the STAR breakdown';
+    });
+  });
+
+  // Résumé request form: validate, then send to the form service.
+  var form = document.getElementById('resume-form');
+  var sent = document.getElementById('form-sent');
+  var fail = document.getElementById('form-fail');
+  function check(id, test) {
+    var input = document.getElementById(id);
+    var ok = test(input.value.trim());
+    input.closest('.field').classList.toggle('invalid', !ok);
+    input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    return ok;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fail.style.display = 'none';
+    var ok = true;
+    ok = check('f-name', function (v) { return v.length > 0; }) && ok;
+    ok = check('f-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }) && ok;
+    ok = check('f-company', function (v) { return v.length > 0; }) && ok;
+    ok = check('f-role', function (v) { return v.length > 0; }) && ok;
+    if (!ok) { form.querySelector('.invalid input').focus(); return; }
+    var data = new FormData(form);
+    var button = form.querySelector('button[type=submit]');
+    button.disabled = true; button.textContent = 'Sending…';
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('send failed'); 
+        document.getElementById('sent-text').textContent = 'Thanks, ' + data.get('name') + '. I’ll email my résumé to ' + data.get('email') + ' for the ' + data.get('role') + ' role at ' + data.get('company') + '.';
+        form.style.display = 'none'; sent.style.display = 'block'; })
+      .catch(function () { fail.style.display = 'block'; })
+      .finally(function () { button.disabled = false; button.textContent = 'Send request'; });
+  });
+  document.getElementById('send-another').addEventListener('click', function () {
+    form.reset(); sent.style.display = 'none'; form.style.display = 'flex';
+  });
+  ['f-name','f-email','f-company','f-role'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () { this.closest('.field').classList.remove('invalid'); });
+  });
+</script>
+</body>
+</html>
