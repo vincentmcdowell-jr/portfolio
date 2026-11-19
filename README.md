@@ -4,12 +4,13 @@ Two pages, no build step, no dependencies beyond Google Fonts:
 
 - `index.html`: the home page (experience, projects, education, about, résumé request)
 - `story.html`: the scrollytelling "My story" page
+- `site.css`: the design system both pages share (colors, type, header, buttons, cards, form fields)
 - `images/`: put your photos here (currently just `portrait.jpg`, the home page portrait)
 
 ## 1. Put it on GitHub Pages (about 10 minutes)
 
 1. Sign in to GitHub and create a new **public** repository. If you name it `YOUR_USERNAME.github.io`, the site will live at `https://YOUR_USERNAME.github.io/`. Any other name works too; the site then lives at `https://YOUR_USERNAME.github.io/REPO_NAME/`.
-2. Upload `index.html`, `story.html`, `README.md`, and the `images` folder. (On the repo page: **Add file → Upload files**, then **Commit changes**.) GitHub won't keep an empty folder, so add a photo to `images` before uploading, or create the folder later when you add your first image.
+2. Upload `index.html`, `story.html`, `site.css`, `README.md`, and the `images` folder. (On the repo page: **Add file → Upload files**, then **Commit changes**.) GitHub won't keep an empty folder, so add a photo to `images` before uploading, or create the folder later when you add your first image.
 3. Open **Settings → Pages**. Under **Build and deployment**, set **Source** to *Deploy from a branch*, choose the `main` branch and the `/ (root)` folder, and save.
 4. Wait a minute or two, then open the URL shown at the top of the Pages settings. Both pages are live: the home page at `/` and the story at `/story.html`.
 
@@ -51,13 +52,30 @@ Always write a short `alt` description. It helps screen readers and search engin
 
 ## 4. Other placeholders to fill in
 
-Search each file for `[` to find them:
+The metrics, team sizes, and About me sentence are filled in. What is left:
 
-- `[X]` metrics in the experience and project sections
-- `[X]-person team` and `[team size]` on the drone and robot soccer projects
-- `[Add a sentence or two on what first got you into robotics.]` in About me
+- Photo slots (see section 3)
 - Your GitHub link: there is a commented-out `<a>` tag in the footer of each page; replace `YOUR_USERNAME` and remove the comment markers
 
-## 5. Optional: a custom domain
+## 5. Changing colors, fonts, or shared components
+
+Both pages load `site.css`. The palette and type scale are CSS variables at the top of that file, each with a comment saying what it is for, so a color changed there changes on both pages:
+
+| Variable | Value | Used for |
+|---|---|---|
+| `--bg` | `#F7F9FC` | Page background |
+| `--surface` | `#FFFFFF` | Cards and content surfaces |
+| `--surface-2` | `#EEF2F7` | Alternate sections and subtle containers |
+| `--text` | `#172033` | Headings and important content |
+| `--text-2` | `#334155` | Body text |
+| `--muted` | `#55657A` | Dates, captions, supplementary detail |
+| `--navy` | `#1B2D5B` | Dark sections, hover states, emphasis |
+| `--blue` | `#2E5090` | Buttons, links, interactive accents |
+| `--gold` | `#F5C518` | Occasional highlights (never body text on a light surface) |
+| `--border` | `#CBD5E1` | Cards and section dividers |
+
+The header, buttons (`btn-primary`, `btn-secondary`), cards, chips, and form fields are also defined once in `site.css`. Layout that belongs to only one page stays in that page's own `<style>` block.
+
+## 6. Optional: a custom domain
 
 Buy a domain (around $12 a year from any registrar), then in the repo's **Settings → Pages** enter it under **Custom domain** and follow GitHub's DNS instructions. GitHub provides the HTTPS certificate automatically.
