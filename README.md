@@ -4,7 +4,7 @@ Two pages, no build step, no dependencies beyond Google Fonts:
 
 - `index.html`: the home page (experience, projects, education, about, résumé request)
 - `story.html`: the scrollytelling "My story" page
-- `images/`: put your photos here (empty for now)
+- `images/`: put your photos here (currently just `portrait.jpg`, the home page portrait)
 
 ## 1. Put it on GitHub Pages (about 10 minutes)
 
@@ -28,10 +28,16 @@ Until you do this, the form shows the "Something went wrong" message with your e
 
 ## 3. Add photos whenever you have them
 
-Each image spot is a placeholder frame. To fill one:
+Only the home page portrait is live. Every other image spot is still in the HTML, in its original position, but switched off with the `hidden` attribute so visitors never see an empty frame. Search each file for `hidden>` to list them:
+
+- `index.html`: three project photos (`<div class="img" hidden>`)
+- `story.html`: the hero portrait (`<div class="portrait" hidden>`) and six story-card images (`<div class="media" hidden>`)
+
+To switch one on:
 
 1. Put the photo in the `images` folder (JPG or PNG, ideally under 500 KB; 1600 px wide is plenty).
-2. Find the matching frame in the HTML. Each has a comment above it showing the exact line to add, for example:
+2. Find the matching slot in the HTML. The bracketed text describes the photo that was planned for it.
+3. Delete the word `hidden` and replace the bracketed text with an `<img>` line, for example:
 
    ```html
    <div class="img">
@@ -39,7 +45,7 @@ Each image spot is a placeholder frame. To fill one:
    </div>
    ```
 
-   Replace the bracketed placeholder text with the `<img>` line. The frame crops and scales the photo automatically.
+   The frame crops and scales the photo automatically, and the layout goes back to image-plus-text on its own.
 
 Always write a short `alt` description. It helps screen readers and search engines.
 

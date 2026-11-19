@@ -29,6 +29,8 @@
   .e2:hover{box-shadow:var(--e3)}
   .img{background-color:#EEF0F2;background-image:repeating-linear-gradient(45deg,transparent 0,transparent 9px,#DFE2E6 9px,#DFE2E6 10px);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--muted);font-size:15px;position:relative;overflow:hidden}
   .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* Photo slots waiting on a photo carry the `hidden` attribute. To fill one: delete `hidden` and swap the bracketed text for an <img>. */
+  [hidden]{display:none!important}
   .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:8px;font-weight:500;font-size:15px;letter-spacing:.01em;text-decoration:none;border:0;transition:box-shadow .15s,background .15s}
   .btn-cta{background:var(--cta);color:#fff;box-shadow:var(--e1)}
   .btn-cta:hover{background:var(--cta-hover);color:#fff;box-shadow:var(--e3)}
@@ -176,9 +178,7 @@
         </div>
       </div>
       <div class="portrait">
-        <!-- To add your photo: put the file in the images folder and replace the text below with
-             <img src="images/portrait.jpg" alt="Vincent McDowell Jr. with a robot"> -->
-        <div class="img">[Portrait: you with a robot or at your bench]</div>
+        <div class="img"><img src="images/portrait.jpg" alt="Portrait of Vincent McDowell Jr."></div>
       </div>
     </div>
   </section>
@@ -310,7 +310,7 @@
     <div class="projects">
       <article class="e2 project">
         <!-- Add a photo: <img src="images/uno32-shield.jpg" alt="Custom PCB shield mounted on the Uno32"> -->
-        <div class="img">[Hardware photo: PCB shield on the Uno32, or the system architecture diagram]</div>
+        <div class="img" hidden>[Hardware photo: PCB shield on the Uno32, or the system architecture diagram]</div>
         <div class="text">
           <p class="meta">Independent research, Autonomous Systems Lab, 2025</p>
           <h3>Uno32 pin tester</h3>
@@ -332,7 +332,7 @@
 
       <article class="e2 project">
         <!-- Add a photo: <img src="images/drone.jpg" alt="Air-quality sensing drone in flight"> -->
-        <div class="img">[Flight photo, or CFD renders of the enclosure iterations]</div>
+        <div class="img" hidden>[Flight photo, or CFD renders of the enclosure iterations]</div>
         <div class="text">
           <p class="meta">CITRIS capstone (ECE 129), [X]-person team, 2024</p>
           <h3>Air-quality sensing drone</h3>
@@ -352,7 +352,7 @@
 
       <article class="e2 project">
         <!-- Add a photo: <img src="images/soccer-robot.jpg" alt="Autonomous robot soccer player"> -->
-        <div class="img">[Photo of the robot, or the sensor-filter circuit layout]</div>
+        <div class="img" hidden>[Photo of the robot, or the sensor-filter circuit layout]</div>
         <div class="text">
           <p class="meta">Introduction to Mechatronics, [team size], 2023</p>
           <h3>Autonomous robot soccer player</h3>

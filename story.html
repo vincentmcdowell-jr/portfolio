@@ -50,6 +50,8 @@
   .hero .portrait{flex:2 1 320px;min-width:0}
   .portrait .frame{aspect-ratio:4/5;border-radius:16px;background:var(--navy);color:#C9D3EA;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;font-size:15px;box-shadow:0 32px 64px -32px rgba(27,45,91,.6);position:relative;overflow:hidden}
   .portrait .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* Photo slots waiting on a photo carry the `hidden` attribute. To fill one: delete `hidden` and swap the bracketed text for an <img>. */
+  [hidden]{display:none!important}
   .actions{display:flex;flex-wrap:wrap;gap:12px}
 
   /* Story rail */
@@ -179,8 +181,8 @@
         <a href="#contact" class="btn btn-soft">Contact me</a>
       </div>
     </div>
-    <div class="portrait">
-      <!-- Add your photo: <img src="images/portrait.jpg" alt="Vincent McDowell Jr. with a robot"> inside the frame -->
+    <div class="portrait" hidden>
+      <!-- Add your photo: delete `hidden` above, then put <img src="images/portrait.jpg" alt="Portrait of Vincent McDowell Jr."> inside the frame -->
       <div class="frame">[Portrait: you with a robot or at your bench]</div>
     </div>
   </section>
@@ -226,7 +228,7 @@
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
             <!-- Add media: <img src="images/soccer-robot.jpg" alt="..."> -->
-            <div class="media">[Video: one full run, from finding the goal to reloading]</div>
+            <div class="media" hidden>[Video: one full run, from finding the goal to reloading]</div>
             <div class="body">
               <p class="meta">Introduction to Mechatronics, 2023</p>
               <h3>Autonomous robot soccer player</h3>
@@ -247,7 +249,7 @@
       <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
-            <div class="media">[Photo: Raspberry Pi and microphone test rig]</div>
+            <div class="media" hidden>[Photo: Raspberry Pi and microphone test rig]</div>
             <div class="body">
               <p class="meta">Amazon Lab126, summer 2023</p>
               <h3>Quality Assurance Engineer Intern</h3>
@@ -268,7 +270,7 @@
       <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
-            <div class="media">[CFD renders of the enclosure, or flight footage]</div>
+            <div class="media" hidden>[CFD renders of the enclosure, or flight footage]</div>
             <div class="body">
               <p class="meta">CITRIS capstone (ECE 129), 2024</p>
               <h3>Air-quality sensing drone</h3>
@@ -302,7 +304,7 @@
       <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
-            <div class="media">[Diagram: component integration into the control architecture model]</div>
+            <div class="media" hidden>[Diagram: component integration into the control architecture model]</div>
             <div class="body">
               <p class="meta">Cummins Inc., Corporate Research and Technology, summer 2025</p>
               <h3>Electronic Controls Engineer Intern</h3>
@@ -323,7 +325,7 @@
       <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
-            <div class="media">[Photo: custom PCB shield on the Uno32 with the GUI beside it]</div>
+            <div class="media" hidden>[Photo: custom PCB shield on the Uno32 with the GUI beside it]</div>
             <div class="body">
               <p class="meta">Autonomous Systems Lab, fall 2025</p>
               <h3>Uno32 pin tester</h3>
@@ -359,7 +361,7 @@
       <div class="entry reveal"><span class="dot gold" aria-hidden="true"></span>
         <article class="hc" tabindex="0" aria-expanded="false">
           <div class="top">
-            <div class="media">[Approved photo of you with the hardware, or a public image of the robot]</div>
+            <div class="media" hidden>[Approved photo of you with the hardware, or a public image of the robot]</div>
             <div class="body">
               <p class="meta">Apptronik / Google DeepMind, February 2026 to present</p>
               <h3>Mechatronic Engineer, Robotics Systems</h3>
